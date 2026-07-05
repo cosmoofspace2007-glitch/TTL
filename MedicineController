@@ -1,0 +1,22 @@
+@RestController
+@RequestMapping("/medicines")
+public class MedicineController {
+
+    @Autowired
+    private MedicineService medicineService;
+
+    @GetMapping("/{id}")
+    public Medicine getMedicine(@PathVariable Long id){
+
+        return medicineService.getMedicine(id);
+
+    }
+
+    @PutMapping
+    public Medicine updateMedicine(@RequestBody Medicine medicine){
+
+        return medicineService.updateMedicine(medicine);
+
+    }
+
+}
