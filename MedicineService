@@ -12,4 +12,13 @@ public class MedicineService {
         return repository.findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Không tìm thấy thuốc"));
+
+@CacheEvict(value = "medicines", key = "#medicine.id")
+    public Medicine updateMedicine(Medicine medicine){
+
+        System.out.println("Update Database");
+
+        return repository.save(medicine);
+
+    }
     }
