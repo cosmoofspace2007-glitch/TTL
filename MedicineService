@@ -1,0 +1,15 @@
+@Service
+public class MedicineService {
+
+    @Autowired
+    private MedicineRepository repository;
+
+    @Cacheable(value = "medicines", key = "#id")
+    public Medicine getMedicine(Long id) {
+
+        System.out.println("Đọc dữ liệu từ Database");
+
+        return repository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Không tìm thấy thuốc"));
+    }
